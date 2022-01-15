@@ -53,6 +53,20 @@
                     <hr class="sidebar-divider mt-3">
                 <?php endforeach; ?>
 
+                <div class="sidebar-heading">
+                    Lainnya
+                </div>
+                <?php
+                if ($title == 'Pengaturan') {
+                    echo '<li class="nav-item active">';
+                } else {
+                    echo '<li class="nav-item">';
+                }
+                ?>
+                <a class="nav-link pb-0" href="<?= base_url('Admin/setting'); ?>">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Pengaturan</span></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
                         <i class=" fas fa-fw fa-sign-out-alt"></i>
