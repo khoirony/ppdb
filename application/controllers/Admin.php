@@ -61,7 +61,8 @@ class Admin extends CI_Controller
                 'no_peserta' => htmlspecialchars($this->input->post('no_peserta', true)),
                 'nama_lengkap' => htmlspecialchars($this->input->post('nama', true)),
                 'nisn' => htmlspecialchars($this->input->post('nisn', true)),
-                'ttl' => htmlspecialchars($this->input->post('ttl', true)),
+                'tempat_lahir' => htmlspecialchars($this->input->post('tempat_lahir', true)),
+                'tgl_lahir' => htmlspecialchars($this->input->post('tgl_lahir', true)),
                 'jk' => htmlspecialchars($this->input->post('jk', true)),
             ];
 

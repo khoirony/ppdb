@@ -77,7 +77,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]');
 
 		if ($this->form_validation->run() == false) {
-			$data['title'] = 'Registrasi Karyawan';
+			$data['title'] = 'Registrasi Siswa';
 			$this->load->view('templates/auth_header', $data);
 			$this->load->view('auth/registration');
 			$this->load->view('templates/auth_footer');
@@ -89,7 +89,8 @@ class Auth extends CI_Controller
 				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 1,
-				'date_created' => time()
+				'date_created' => time(),
+				'jalur' => htmlspecialchars($this->input->post('jalur', true)),
 			];
 
 			$this->db->insert('user', $data);

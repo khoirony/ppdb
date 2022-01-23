@@ -14,7 +14,7 @@
                 <th scope="col">No Peserta</th>
                 <th scope="col">Nama Lengkap</th>
                 <th scope="col">NISN</th>
-                <th scope="col">Tempat Lahir</th>
+                <th scope="col">Tempat Tgl Lahir</th>
                 <th scope="col">Jenis kelamin</th>
                 <th scope="col">Status</th>
                 <th scope="col" width="10%" class="text-center">Aksi</th>
@@ -30,7 +30,7 @@
                     <td><?= $siswa['no_peserta']; ?></td>
                     <td><?= $siswa['nama_lengkap']; ?></td>
                     <td><?= $siswa['nisn']; ?></td>
-                    <td><?= $siswa['ttl']; ?></td>
+                    <td><?= $siswa['tempat_lahir'] . ', ' . $siswa['tgl_lahir']; ?></td>
                     <td><?= $siswa['jk']; ?></td>
                     <td>
                         <?php

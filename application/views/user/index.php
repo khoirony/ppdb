@@ -2,25 +2,55 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
-    <?= $this->session->flashdata('msg');
-    if (isset($_SESSION['msg'])) {
-        unset($_SESSION['msg']);
-    } ?>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="w-100">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $user['name']; ?></h5>
-                    <p class="card-text"><?= $user['email']; ?></p>
-                    <p class="card-text"><small class="text-muted">Member Since <?= date('d F Y', $user['date_created']); ?></small></p>
+    <div class="row text-white pt-3 pb-5 justify-content-center">
+        <div class="card bg-primary col-3 mr-5">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-users"></i>
                 </div>
+                <h5 class="card-title">Data Siswa</h5>
+                <h3 class="text-danger font-weight-bold">
+                    Belum Terisi
+                </h3>
+                <a href="<?= base_url('User/tambahsiswa'); ?>">
+                    <p class="card-text text-white">Isi Data <i class="fas fa-angle-double-right ml-2"></i></p>
+                </a>
             </div>
         </div>
+
+        <div class="card bg-secondary col-3 mr-5">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h5 class="card-title">Data Orang Tua</h5>
+                <h3 class="text-danger font-weight-bold">
+                    Belum Terisi
+                </h3>
+                <a href="<?= base_url('User/tambahortu'); ?>">
+                    <p class="card-text text-white">Isi Data <i class="fas fa-angle-double-right ml-2"></i></p>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="card bg-dark col-3 mr-5">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h5 class="card-title">Data Sekolah</h5>
+                <h3 class="text-danger font-weight-bold">
+                    Belum Terisi
+                </h3>
+                <a href="<?= base_url('User/tambahsekolah'); ?>">
+                    <p class="card-text text-white">Isi Data <i class="fas fa-angle-double-right ml-2"></i></p>
+                </a>
+            </div>
+        </div>
+
     </div>
 
 </div>

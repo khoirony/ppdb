@@ -21,9 +21,16 @@
                     <input type="text" class="form-control form-control-user" id="nisn" name="nisn" placeholder="NISN" value="<?= $siswa['nisn']; ?>">
                     <?= form_error('nisn', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="ttl" name="ttl" placeholder="Tempat Tgl Lahir" value="<?= $siswa['ttl']; ?>">
-                    <?= form_error('ttl', '<small class="text-danger pl-3">', '</small>'); ?>
+                <span class="pl-3">Tempat, Tanggal Lahir</span>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control form-control-user" id="tempat_lahir" name="tempat_lahir" value="<?= $siswa['tempat_lahir']; ?>">
+                        <?= form_error('tempat_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control form-control-user" id="tgl_lahir" name="tgl_lahir" value="<?= $siswa['tgl_lahir']; ?>">
+                        <?= form_error('tgl_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="jk" name="jk" placeholder="Jenis Kelamin" value="<?= $siswa['jk']; ?>">
