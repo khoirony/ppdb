@@ -90,7 +90,6 @@ class Auth extends CI_Controller
 				'role_id' => 2,
 				'is_active' => 1,
 				'date_created' => time(),
-				'jalur' => htmlspecialchars($this->input->post('jalur', true)),
 			];
 
 			$this->db->insert('user', $data);

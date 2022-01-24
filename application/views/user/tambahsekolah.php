@@ -9,7 +9,7 @@
 
         <div class="col-md-5">
 
-            <form class="user" method="POST" action="<?= base_url('Superintendent/tambahkapal'); ?>">
+            <form class="user" method="POST" action="<?= base_url('User/tambahsekolah'); ?>">
 
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="asal_sekolah" name="asal_sekolah" placeholder="Asal Sekolah" value="<?= set_value('asal_sekolah'); ?>">
@@ -21,9 +21,12 @@
                     <?= form_error('alamat_sekolah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
+                <span class="pl-2">Status Sekolah Asal</span>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="status" name="status" placeholder="Status Sekolah Asal" value="<?= set_value('status'); ?>">
-                    <?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <select class="form-select form-select-lg rounded-pill fs-6" id="status_sekolah" name="status_sekolah" aria-label="Default select example">
+                        <option value="Swasta">Swasta</option>
+                        <option value="Negeri">Negeri</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -36,9 +39,13 @@
                     <?= form_error('nomor_ijazah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
+                <span class="pl-2">Jalur Pendaftaran</span>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="jalur_pendaftaran" name="jalur_pendaftaran" placeholder="Jalur Pendaftaran" value="<?= set_value('jalur_pendaftaran'); ?>">
-                    <?= form_error('jalur_pendaftaran', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <select class="form-select form-select-lg rounded-pill fs-6" id="jalur" name="jalur" aria-label="Default select example">
+                        <option value="Reguler">Reguler</option>
+                        <option value="Kurang Mampu">Kurang Mampu</option>
+                        <option value="Yatim Piatu">Yatim Piatu</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-user btn-block">

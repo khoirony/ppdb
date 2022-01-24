@@ -9,16 +9,16 @@
 
         <div class="col-md-5">
 
-            <form class="user" method="POST" action="<?= base_url('User/tambahortu'); ?>">
+            <form class="user" method="POST" action="">
 
                 <span class="pl-3">Nama Orang Tua</span>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="nama_ayah" name="nama_ayah" placeholder="Nama Ayah">
+                        <input type="text" class="form-control form-control-user" id="nama_ayah" name="nama_ayah" placeholder="Nama Ayah" value="<?= $ortu['nama_ayah']; ?>">
                         <?= form_error('ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="nama_ibu" name="nama_ibu" placeholder="Nama Ibu">
+                    <div class=" col-sm-6">
+                        <input type="text" class="form-control form-control-user" id="nama_ibu" name="nama_ibu" placeholder="Nama Ibu" value="<?= $ortu['nama_ibu']; ?>">
                         <?= form_error('ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
@@ -54,27 +54,27 @@
                 <span class="pl-3">Pekerjaan Orang Tua</span>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah">
+                        <input type="text" class="form-control form-control-user" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah" value="<?= $ortu['pekerjaan_ayah']; ?>">
                         <?= form_error('pekerjaan_ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control form-control-user" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu">
+                        <input type="text" class="form-control form-control-user" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu" value="<?= $ortu['pekerjaan_ayah']; ?>">
                         <?= form_error('pekerjaan_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="penghasilan" name="penghasilan" placeholder="Penghasilan Perbulan" value="<?= set_value('penghasilan'); ?>">
+                    <input type="text" class="form-control form-control-user" id="penghasilan" name="penghasilan" placeholder="Penghasilan Perbulan" value="<?= $ortu['penghasilan_perbulan']; ?>">
                     <?= form_error('penghasilan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Orang Tua" value="<?= set_value('alamat'); ?>">
+                    <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Orang Tua" value="<?= $ortu['alamat_ortu']; ?>">
                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="nomor" name="nomor" placeholder="Nomor Telp Orang Tua" value="<?= set_value('nomor'); ?>">
+                    <input type="text" class="form-control form-control-user" id="nomor" name="nomor" placeholder="Nomor Telp Orang Tua" value="<?= $ortu['nomor_ortu']; ?>">
                     <?= form_error('nomor', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 

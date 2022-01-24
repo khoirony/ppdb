@@ -11,9 +11,7 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <h5 class="card-title">Data Siswa</h5>
-                <h3 class="text-danger font-weight-bold">
-                    Belum Terisi
-                </h3>
+                <?= $ceksiswa; ?>
                 <a href="<?= base_url('User/tambahsiswa'); ?>">
                     <p class="card-text text-white">Isi Data <i class="fas fa-angle-double-right ml-2"></i></p>
                 </a>
@@ -26,9 +24,7 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <h5 class="card-title">Data Orang Tua</h5>
-                <h3 class="text-danger font-weight-bold">
-                    Belum Terisi
-                </h3>
+                <?= $cekortu; ?>
                 <a href="<?= base_url('User/tambahortu'); ?>">
                     <p class="card-text text-white">Isi Data <i class="fas fa-angle-double-right ml-2"></i></p>
                 </a>
@@ -42,9 +38,7 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <h5 class="card-title">Data Sekolah</h5>
-                <h3 class="text-danger font-weight-bold">
-                    Belum Terisi
-                </h3>
+                <?= $ceksekolah; ?>
                 <a href="<?= base_url('User/tambahsekolah'); ?>">
                     <p class="card-text text-white">Isi Data <i class="fas fa-angle-double-right ml-2"></i></p>
                 </a>
