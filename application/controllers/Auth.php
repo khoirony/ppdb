@@ -9,10 +9,19 @@ class Auth extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
+	public function home()
+	{
+		if ($this->session->userdata('email')) {
+			redirect('blocked');
+		}
+		$data['title'] = 'PPDB ONLINE';
+		$this->load->view('auth/home', $data);
+	}
+
 	public function index()
 	{
 		if ($this->session->userdata('email')) {
-			redirect('user');
+			redirect('blocked');
 		}
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -64,7 +73,7 @@ class Auth extends CI_Controller
 	public function registration()
 	{
 		if ($this->session->userdata('email')) {
-			redirect('user');
+			redirect('blocked');
 		}
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [

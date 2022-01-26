@@ -3,7 +3,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-        <div class="col-lg-7">
+        <div class="col-lg-5">
 
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
@@ -12,7 +12,8 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">LOGIN</h1>
+                                    <p class="h4 text-gray-900 mb-2">Form Login PPDB Online</p>
+                                    <p class="h5 text-gray-900 mb-4">MA Darul Mukarram</p>
                                 </div>
                                 <br>
                                 <?= $this->session->flashdata('msg');
@@ -36,12 +37,12 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Masuk
                                     </button>
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
+                                    <span class="small">Belum Mempunyai Akun?</span> <a class="small" href="<?= base_url('auth/registration'); ?>">Daftar disini!</a>
                                 </div>
                             </div>
                         </div>

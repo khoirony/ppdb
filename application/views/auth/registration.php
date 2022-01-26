@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
+    <div class="card o-hidden border-0 shadow-lg my-5 col-lg-5 mx-auto">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
@@ -29,12 +29,12 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
-                                Register Account
+                                Daftar
                             </button>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small" href="<?= base_url('auth'); ?>">Already have an account? Login!</a>
+                            <span class="small">Sudah Mempunyai akun? </span> <a class="small" href="<?= base_url('auth'); ?>">Login!</a>
                         </div>
                     </div>
                 </div>

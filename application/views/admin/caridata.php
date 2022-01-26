@@ -2,11 +2,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <h1 class="h3 mb-4 text-gray-800">Hasil Pencarian dari : <?= $text; ?></h1>
     <br>
-    <div style="float: right;" class="mr-3 mb-2">
-        <a class="btn btn-primary rounded-pill pl-3 pr-3" href="<?= base_url('Admin/kirim'); ?>">Kirim Pengumuman</a>
-    </div>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -17,13 +15,14 @@
                 <th scope="col">Tempat Tgl Lahir</th>
                 <th scope="col">Jenis kelamin</th>
                 <th scope="col">Status</th>
-                <th scope="col" width="10%" class="text-center">Aksi</th>
+                <th scope="col" width="14%" class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $no = 1;
-            foreach ($data_siswa as $siswa) {
+            foreach ($cari as $siswa) {
+
             ?>
                 <tr>
                     <th scope="row"><?= $no++; ?></th>
@@ -34,29 +33,26 @@
                     <td><?= $siswa['jk']; ?></td>
                     <td>
                         <?php
-                        if ($siswa['status_lulus'] == 1) {
-                            echo '<span class="badge badge-success">Lulus</span>';
+                        if ($siswa['status_verif'] == 1) {
+                            echo '<span class="badge badge-success">Sudah diverifikasi</span>';
                         } else {
-                            echo '<span class="badge badge-warning">Belum Lulus</span>';
+                            echo '<span class="badge badge-danger">Belum diverifikasi</span>';
                         }
                         ?>
                     </td>
-                    <td class="text-center">
+                    <td>
+                        <a href="<?= base_url('Admin/editdata/' . $siswa['id_siswa']); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="<?= base_url('Admin/hapusdata/' . $siswa['id_siswa']); ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                         <?php
-                        if ($siswa['status_lulus'] == 0) {
-                            echo anchor('Admin/lulus/' . $siswa['id_siswa'], '<div class="btn btn-sm btn-success"><i class="fas fa-check-circle"></i></div>');
+                        if ($siswa['status_verif'] == 0) {
+                            echo anchor('Admin/setujui/' . $siswa['id_siswa'], '<div class="btn btn-sm btn-success"><i class="fas fa-check-circle"></i></div>');
                         } else {
-                            echo anchor('Admin/tidaklulus/' . $siswa['id_siswa'], '<div class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></div>');
+                            echo anchor('Admin/batalkan/' . $siswa['id_siswa'], '<div class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></div>');
                         }
                         ?>
                     </td>
                 </tr>
             <?php
-            }
-            if ($data_siswa == NULL) {
-                echo '<tr>
-                    <td colspan="8" class="text-center border-bottom">Data Kosong</td>
-                </tr>';
             }
             ?>
         </tbody>

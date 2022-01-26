@@ -238,7 +238,6 @@ class User extends CI_Controller
                 'penghasilan_perbulan' => htmlspecialchars($this->input->post('penghasilan', true)),
                 'alamat_ortu' => htmlspecialchars($this->input->post('alamat', true)),
                 'nomor_ortu' => htmlspecialchars($this->input->post('nomor', true)),
-                'id_user' => $user['id'],
             ];
 
             $this->db->set($data);
@@ -288,6 +287,45 @@ class User extends CI_Controller
             ];
 
             $this->db->insert('data_sekolah', $data);
+
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
+            redirect('User/tambahsekolah');
+        }
+    }
+
+    public function updatesekolah($id)
+    {
+        $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required');
+        $this->form_validation->set_rules('alamat_sekolah', 'Alamat Sekolah', 'required');
+        $this->form_validation->set_rules('status_sekolah', 'Status Sekolah', 'required');
+        $this->form_validation->set_rules('tahun_lulus', 'Tahun Lulus', 'required');
+        $this->form_validation->set_rules('nomor_ijazah', 'Nomor Ijazah', 'required');
+        $this->form_validation->set_rules('jalur', 'Jalur Pendaftaran', 'required');
+
+        $data['title'] = 'Data Sekolah';
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+        $data['sekolah'] = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->row_array();
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('User/updatesekolah', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'asal_sekolah' => htmlspecialchars($this->input->post('asal_sekolah', true)),
+                'alamat_sekolah' => htmlspecialchars($this->input->post('alamat_sekolah', true)),
+                'status_sekolah' => htmlspecialchars($this->input->post('status_sekolah', true)),
+                'tahun_lulus' => htmlspecialchars($this->input->post('tahun_lulus', true)),
+                'nomor_ijazah' => htmlspecialchars($this->input->post('nomor_ijazah', true)),
+                'jalur_pendaftaran' => htmlspecialchars($this->input->post('jalur', true)),
+            ];
+
+            $this->db->set($data);
+            $this->db->where('id_sekolah', $id);
+            $this->db->update('data_sekolah');
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
             redirect('User/tambahsekolah');

@@ -47,5 +47,14 @@
 
     </div>
 
+    <br><br><br>
+    <div class="continer ms-5">
+        <h3>Perhatian</h3>
+        1. Setiap calon siswa baru wajib mengisi form pendaftaran secara lengkap<br>
+        2. Data-data yang diisikan harus sesuai dengan data aslinya<br>
+        3. Setelah calon siswa baru mengisi form pendaftaran akan mendapatkan akun untuk login<br>
+    </div>
+
+
 </div>
 <!-- /.container-fluid -->

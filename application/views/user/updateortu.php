@@ -35,6 +35,7 @@
                                 <option value="D3">D3</option>
                                 <option value="S1">S1</option>
                             </select>
+                            <?= form_error('pendidikan_ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -47,6 +48,7 @@
                                 <option value="D3">D3</option>
                                 <option value="S1">S1</option>
                             </select>
+                            <?= form_error('pendidikan_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                 </div>

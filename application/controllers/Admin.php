@@ -37,6 +37,24 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function caridata()
+    {
+        $data['title'] = 'Verifikasi Data Siswa';
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+
+        $query = "SELECT * FROM data_siswa where nama_lengkap like '" . $this->input->post('cari') . "%'";
+        $data['cari'] = $this->db->query($query)->result_array();
+        $data['hitung'] = $this->db->query($query)->num_rows();
+        $data['text'] = $this->input->post('cari');
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/caridata', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function tambahdata()
     {
         $this->form_validation->set_rules('no_peserta', 'No Peserta', 'required|trim');
