@@ -15,7 +15,34 @@ class Auth extends CI_Controller
 			redirect('blocked');
 		}
 		$data['title'] = 'PPDB ONLINE';
-		$this->load->view('auth/home', $data);
+		
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('auth/home');
+		$this->load->view('templates/auth_footer');
+	}
+
+	public function tentang()
+	{
+		if ($this->session->userdata('email')) {
+			redirect('blocked');
+		}
+		$data['title'] = 'Tentang Sekolah';
+		
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('auth/tentang');
+		$this->load->view('templates/auth_footer');
+	}
+
+	public function kontak()
+	{
+		if ($this->session->userdata('email')) {
+			redirect('blocked');
+		}
+		$data['title'] = 'Kontak Kami';
+		
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('auth/kontak');
+		$this->load->view('templates/auth_footer');
 	}
 
 	public function index()

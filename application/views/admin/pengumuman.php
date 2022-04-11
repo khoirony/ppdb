@@ -11,7 +11,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col" width="5%">No</th>
-                <th scope="col">No Peserta</th>
+                <!-- <th scope="col">No Peserta</th> -->
                 <th scope="col">Nama Lengkap</th>
                 <th scope="col">NISN</th>
                 <th scope="col">Tempat Tgl Lahir</th>
@@ -27,7 +27,7 @@
             ?>
                 <tr>
                     <th scope="row"><?= $no++; ?></th>
-                    <td><?= $siswa['no_peserta']; ?></td>
+                    <!-- <td><?= $siswa['no_peserta']; ?></td> -->
                     <td><?= $siswa['nama_lengkap']; ?></td>
                     <td><?= $siswa['nisn']; ?></td>
                     <td><?= $siswa['tempat_lahir'] . ', ' . $siswa['tgl_lahir']; ?></td>

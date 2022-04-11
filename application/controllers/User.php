@@ -39,7 +39,7 @@ class User extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('User/index', $data);
+        $this->load->view('user/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -71,9 +71,9 @@ class User extends CI_Controller
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             if ($ceksiswa != 1) {
-                $this->load->view('User/tambahsiswa', $data);
+                $this->load->view('user/tambahsiswa', $data);
             } else {
-                $this->load->view('User/datasiswa', $data);
+                $this->load->view('user/datasiswa', $data);
             }
             $this->load->view('templates/footer');
         } else {
@@ -97,7 +97,7 @@ class User extends CI_Controller
             $this->db->insert('data_siswa', $data);
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Siswa Berhasil Ditambahkan!</div>');
-            redirect('User/tambahsiswa');
+            redirect('user/tambahsiswa');
         }
     }
 
@@ -126,7 +126,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('User/updatesiswa', $data);
+            $this->load->view('user/updatesiswa', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [
@@ -150,7 +150,7 @@ class User extends CI_Controller
             $this->db->update('data_siswa');
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Siswa Berhasil Ditambahkan!</div>');
-            redirect('User/tambahsiswa');
+            redirect('user/tambahsiswa');
         }
     }
 
@@ -178,9 +178,9 @@ class User extends CI_Controller
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             if ($cekortu != 1) {
-                $this->load->view('User/tambahortu', $data);
+                $this->load->view('user/tambahortu', $data);
             } else {
-                $this->load->view('User/dataortu', $data);
+                $this->load->view('user/dataortu', $data);
             }
             $this->load->view('templates/footer');
         } else {
@@ -200,7 +200,7 @@ class User extends CI_Controller
             $this->db->insert('data_ortu', $data);
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
-            redirect('User/tambahortu');
+            redirect('user/tambahortu');
         }
     }
 
@@ -225,7 +225,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('User/updateortu', $data);
+            $this->load->view('user/updateortu', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [
@@ -245,7 +245,7 @@ class User extends CI_Controller
             $this->db->update('data_ortu');
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
-            redirect('User/tambahortu');
+            redirect('user/tambahortu');
         }
     }
 
@@ -270,9 +270,9 @@ class User extends CI_Controller
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             if ($ceksekolah != 1) {
-                $this->load->view('User/tambahsekolah', $data);
+                $this->load->view('user/tambahsekolah', $data);
             } else {
-                $this->load->view('User/datasekolah', $data);
+                $this->load->view('user/datasekolah', $data);
             }
             $this->load->view('templates/footer');
         } else {
@@ -289,7 +289,7 @@ class User extends CI_Controller
             $this->db->insert('data_sekolah', $data);
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
-            redirect('User/tambahsekolah');
+            redirect('user/tambahsekolah');
         }
     }
 
@@ -311,7 +311,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('User/updatesekolah', $data);
+            $this->load->view('user/updatesekolah', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [
@@ -328,8 +328,137 @@ class User extends CI_Controller
             $this->db->update('data_sekolah');
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
-            redirect('User/tambahsekolah');
+            redirect('user/tambahsekolah');
         }
+    }
+
+    public function berkas()
+    {
+        $data['title'] = 'Berkas Pendukung';
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+        $berkas = $this->db->get_where('data_berkas', ['id_user' => $user['id']])->row_array();
+        $data['berkas'] = $berkas;
+        $cekberkas = $this->db->get_where('data_berkas', ['id_user' => $user['id']])->num_rows();
+        $data['cekberkas'] = $cekberkas;
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/berkas', $data);
+            $this->load->view('templates/footer');
+    }
+
+    public function upload(){
+        $data['title'] = 'Berkas Pendukung';
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data_berkas'] = $this->db->get_where('data_berkas', ['id_user' => $user['id']])->row_array();
+        $cekberkas = $this->db->get_where('data_berkas', ['id_user' => $user['id']])->num_rows();
+        $data['cekberkas'] = $cekberkas;
+
+        $upload_ijazah = $_FILES['ijazah']['name'];
+        $upload_kk = $_FILES['kk']['name'];
+        $upload_akta = $_FILES['akta']['name'];
+
+        if ($upload_ijazah) {
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']     = '2048';
+            $config['upload_path'] = './assets/img/berkas/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('ijazah')) {
+                $old_ijazah = $data['data_berkas']['ijazah'];
+                if ($old_ijazah != 'default.jpg') {
+                    unlink(FCPATH . './assets/img/berkas/' . $old_ijazah);
+                }
+                $new_ijazah = $this->upload->data('file_name');
+                if($cekberkas == 0){
+                    $data = [
+                        'ijazah' => $new_ijazah,
+                        'id_user' => $user['id'],
+                    ];
+                    $this->db->insert('data_berkas', $data);
+                }else{
+                    $this->db->set('ijazah', $new_ijazah);
+                    $this->db->where('id_user', $user['id']);
+                    $this->db->update('data_berkas');
+                }
+            } else {
+                echo $this->upload->display_errors();                
+            }
+        }
+        if ($upload_kk) {
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']     = '2048';
+            $config['upload_path'] = './assets/img/berkas/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('kk')) {
+                $old_kk = $data['data_berkas']['kk'];
+                if ($old_kk != 'default.jpg') {
+                    unlink(FCPATH . './assets/img/berkas/' . $old_kk);
+                }
+                $new_kk = $this->upload->data('file_name');
+                if($cekberkas == 0){
+                    $data = [
+                        'kk' => $new_kk,
+                        'id_user' => $user['id'],
+                    ];
+                    $this->db->insert('data_berkas', $data);
+                }else{
+                    $this->db->set('kk', $new_kk);
+                    $this->db->where('id_user', $user['id']);
+                    $this->db->update('data_berkas');
+                }
+            } else {
+                echo $this->upload->display_errors();                
+            }
+        }
+
+        if ($upload_akta) {
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']     = '2048';
+            $config['upload_path'] = './assets/img/berkas/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('akta')) {
+                $old_akta = $data['data_berkas']['akta'];
+                if ($old_akta != 'default.jpg') {
+                    unlink(FCPATH . './assets/img/berkas/' . $old_akta);
+                }
+                $new_akta = $this->upload->data('file_name');
+                if($cekberkas == 0){
+                    $data = [
+                        'akta' => $new_akta,
+                        'id_user' => $user['id'],
+                    ];
+                    $this->db->insert('data_berkas', $data);
+                }else{
+                    $this->db->set('akta', $new_akta);
+                    $this->db->where('id_user', $user['id']);
+                    $this->db->update('data_berkas');
+                }
+            } else {
+                echo $this->upload->display_errors();                
+            }
+        }
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Berkas Berhasil Ditambahkan!</div>');
+        redirect('user/berkas');
+    }
+
+    public function pengumuman()
+    {
+        $data['title'] = 'Pengumuman';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/pengumuman', $data);
+        $this->load->view('templates/footer');
     }
 
     public function setting()
@@ -340,7 +469,7 @@ class User extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('User/setting', $data);
+        $this->load->view('user/setting', $data);
         $this->load->view('templates/footer');
     }
 }

@@ -25,7 +25,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col" width="5%">No</th>
-                <th scope="col">No Peserta</th>
+                <!-- <th scope="col">No Peserta</th> -->
                 <th scope="col">Nama Lengkap</th>
                 <th scope="col">NISN</th>
                 <th scope="col">Tempat Tgl Lahir</th>
@@ -42,7 +42,7 @@
             ?>
                 <tr>
                     <th scope="row"><?= $no++; ?></th>
-                    <td><?= $siswa['no_peserta']; ?></td>
+                    <!-- <td><?= $siswa['no_peserta']; ?></td> -->
                     <td><?= $siswa['nama_lengkap']; ?></td>
                     <td><?= $siswa['nisn']; ?></td>
                     <td><?= $siswa['tempat_lahir'] . ', ' . $siswa['tgl_lahir']; ?></td>
@@ -57,7 +57,7 @@
                         ?>
                     </td>
                     <td>
-                        <a href="<?= base_url('Admin/editdata/' . $siswa['id_siswa']); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="<?= base_url('Admin/lihat/' . $siswa['id_user']); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                         <a href="<?= base_url('Admin/hapusdata/' . $siswa['id_siswa']); ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                         <?php
                         if ($siswa['status_verif'] == 0) {
