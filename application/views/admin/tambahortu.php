@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Update Data Ortu</h1>
+    <h1 class="h3 mb-4 text-gray-800">Tambah Data Ortu</h1>
     <br>
 
     <div class="row ml-3">
@@ -13,12 +13,12 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <span class="pl-3">Nama Ayah</span>
-                        <input type="text" class="form-control form-control-user" id="nama_ayah" name="nama_ayah" placeholder="Nama Ayah" value="<?= $ortu['nama_ayah']; ?>">
+                        <input type="text" class="form-control form-control-user" id="nama_ayah" name="nama_ayah" placeholder="Nama Ayah">
                         <?= form_error('ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class=" col-sm-6">
                         <span class="pl-3">Nama Ibu</span>
-                        <input type="text" class="form-control form-control-user" id="nama_ibu" name="nama_ibu" placeholder="Nama Ibu" value="<?= $ortu['nama_ibu']; ?>">
+                        <input type="text" class="form-control form-control-user" id="nama_ibu" name="nama_ibu" placeholder="Nama Ibu">
                         <?= form_error('ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <span class="pl-3">Pendidikan Ayah</span>
                         <div class="form-group">
                             <select class="form-select form-select-lg rounded-pill fs-6" id="pendidikan_ayah" name="pendidikan_ayah" aria-label="Default select example">
-                                <option value="<?= $ortu['pendidikan_ayah']; ?>"><?= $ortu['pendidikan_ayah']; ?></option>
+                                
                                 <option value="SD">SD</option>
                                 <option value="SLTP">SLTP</option>
                                 <option value="SLTA">SLTA</option>
@@ -43,7 +43,7 @@
                         <span class="pl-3">Pendidikan Ibu</span>
                         <div class="form-group">
                             <select class="form-select form-select-lg rounded-pill fs-6" id="pendidikan_ibu" name="pendidikan_ibu" aria-label="Default select example">
-                                <option value="<?= $ortu['pendidikan_ibu']; ?>"><?= $ortu['pendidikan_ibu']; ?></option>
+                                
                                 <option value="SD">SD</option>
                                 <option value="SLTP">SLTP</option>
                                 <option value="SLTA">SLTA</option>
@@ -58,28 +58,28 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <span class="pl-3">Pekerjaan Ayah</span>
-                        <input type="text" class="form-control form-control-user" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah" value="<?= $ortu['pekerjaan_ayah']; ?>">
+                        <input type="text" class="form-control form-control-user" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Pekerjaan Ayah">
                         <?= form_error('pekerjaan_ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="col-sm-6">
                         <span class="pl-3">Pekerjaan Ibu</span>
-                        <input type="text" class="form-control form-control-user" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu" value="<?= $ortu['pekerjaan_ibu']; ?>">
+                        <input type="text" class="form-control form-control-user" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Pekerjaan Ibu">
                         <?= form_error('pekerjaan_ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="penghasilan" name="penghasilan" placeholder="Penghasilan Perbulan" value="<?= $ortu['penghasilan_perbulan']; ?>">
+                    <input type="text" class="form-control form-control-user" id="penghasilan" name="penghasilan" placeholder="Penghasilan Perbulan">
                     <?= form_error('penghasilan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Orang Tua" value="<?= $ortu['alamat_ortu']; ?>">
+                    <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Orang Tua">
                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="nomor" name="nomor" placeholder="Nomor Telp Orang Tua" value="<?= $ortu['nomor_ortu']; ?>">
+                    <input type="text" class="form-control form-control-user" id="nomor" name="nomor" placeholder="Nomor Telp Orang Tua">
                     <?= form_error('nomor', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 

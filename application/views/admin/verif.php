@@ -58,7 +58,7 @@
                     </td>
                     <td>
                         <a href="<?= base_url('Admin/lihat/' . $siswa['id_user']); ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                        <a href="<?= base_url('Admin/hapusdata/' . $siswa['id_siswa']); ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        <a href="<?= base_url('Admin/hapusdata/' . $siswa['id_user']); ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                         <?php
                         if ($siswa['status_verif'] == 0) {
                             echo anchor('Admin/setujui/' . $siswa['id_siswa'], '<div class="btn btn-sm btn-success"><i class="fas fa-check-circle"></i></div>');

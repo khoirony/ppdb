@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Update Data Sekolah</h1>
+    <h1 class="h3 mb-4 text-gray-800">Tambah Data Sekolah</h1>
     <br>
 
     <div class="row ml-3">
@@ -12,12 +12,12 @@
             <form class="user" method="POST" action="">
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="asal_sekolah" name="asal_sekolah" placeholder="Asal Sekolah" value="<?= $sekolah['asal_sekolah']; ?>">
+                    <input type="text" class="form-control form-control-user" id="asal_sekolah" name="asal_sekolah" placeholder="Asal Sekolah">
                     <?= form_error('asal_sekolah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="alamat_sekolah" name="alamat_sekolah" placeholder="Alamat Sekolah Asal" value="<?= $sekolah['alamat_sekolah']; ?>">
+                    <input type="text" class="form-control form-control-user" id="alamat_sekolah" name="alamat_sekolah" placeholder="Alamat Sekolah Asal">
                     <?= form_error('alamat_sekolah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
@@ -30,12 +30,12 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="tahun_lulus" name="tahun_lulus" placeholder="Tahun Ijazah Lulus" value="<?= $sekolah['tahun_lulus']; ?>">
+                    <input type="text" class="form-control form-control-user" id="tahun_lulus" name="tahun_lulus" placeholder="Tahun Ijazah Lulus">
                     <?= form_error('tahun_lulus', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="nomor_ijazah" name="nomor_ijazah" placeholder="Nomor Ijazah" value="<?= $sekolah['nomor_ijazah']; ?>">
+                    <input type="text" class="form-control form-control-user" id="nomor_ijazah" name="nomor_ijazah" placeholder="Nomor Ijazah">
                     <?= form_error('nomor_ijazah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 

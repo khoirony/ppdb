@@ -119,7 +119,7 @@
                 <h5>Data Ortu <?php if($cekortu == 1){ 
                     echo anchor('Admin/editortu/' . $ortu['id_ortu'], '<span class="badge bg-primary ml-3">Edit Data</span>');
                 }else{
-                    echo anchor('Admin/editortu/', '<span class="badge bg-primary ml-3">Edit Data</span>');
+                    echo anchor('Admin/tambahortu/' . $siswa['id_user'], '<span class="badge bg-primary ml-3">Edit Data</span>');
                 }
                 ?>
                 </h5>
@@ -214,8 +214,12 @@
     <div class="row ml-3">
         <div class="col-5">
             <div class="form-inline">
-                <h5>Data Sekolah <?php
-                echo anchor('User/updatesiswa/' . $siswa['id_siswa'], '<span class="badge bg-primary ml-3">Edit Data</span>');
+                <h5>Data Sekolah <?php if($ceksekolah == 1){ 
+                    echo anchor('Admin/editsekolah/' . $sekolah['id_sekolah'], '<span class="badge bg-primary ml-3">Edit Data</span>');
+                }else{
+                    echo anchor('Admin/tambahsekolah/' . $siswa['id_user'], '<span class="badge bg-primary ml-3">Edit Data</span>');
+                }
+                
                 ?>
                 </h5>
             </div>
@@ -280,32 +284,94 @@
                 <h5>Berkas Pendukung</h5>
             </div>
             <br>
+            <?php if($cekberkas == 1){ 
+            ?>
             <div class="row pt-2">
                 <div class="col-4">
-                    Ijazah
+                    Ijazah<br>
+                    <?php if($ijazah == 0){ 
+                        ?>
+                        <img src="<?= base_url('assets/img/berkas/' . $berkas['ijazah']); ?>" width="150" alt="ijazah" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body mx-auto">
+                                    <img src="<?= base_url('assets/img/berkas/' . $berkas['ijazah']); ?>" alt="ijazah" class="img-thumbnail">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }else{
+                        echo "belum diupload";
+                    }
+                    ?>
+                    
                 </div>
-                <div class="col-8">
-                    : 
-                </div>
-            </div>
-            <div class="row pt-2">
                 <div class="col-4">
-                    Kartu Keluarga
+                    Kartu Keluarga<br>
+                    <?php if($kk == 0){ 
+                    ?>
+                        <img src="<?= base_url('assets/img/berkas/' . $berkas['kk']); ?>" width="150" alt="kk" type="button" data-bs-toggle="modal" data-bs-target="#ModalKK">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalKK" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body mx-auto">
+                                    <img src="<?= base_url('assets/img/berkas/' . $berkas['kk']); ?>" alt="kk" class="img-thumbnail">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }else{
+                        echo "belum diupload";
+                    }
+                    ?>
                 </div>
-                <div class="col-8">
-                    : 
-                </div>
-            </div>
-            <div class="row pt-2">
                 <div class="col-4">
-                    Akta Kelahiran
-                </div>
-                <div class="col-8">
-                    : 
+                    Akta Kelahiran<br>
+                    <?php if($akta == 0){ 
+                    ?>
+                        <img src="<?= base_url('assets/img/berkas/' . $berkas['akta']); ?>" width="150" alt="akta" type="button" data-bs-toggle="modal" data-bs-target="#ModalAkta">
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalAkta" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body mx-auto">
+                                    <img src="<?= base_url('assets/img/berkas/' . $berkas['akta']); ?>" class="img-thumbnail" alt="akta">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }else{
+                        echo "belum diupload";
+                    }
+                    ?>
                 </div>
             </div>
+            <?php
+            }else{
+                echo "-belum ada berkas apapun-";
+            }
+            ?>
         </div>
     </div>
     <br>
 </div>
 <!-- /.container-fluid -->
+
