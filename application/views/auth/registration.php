@@ -6,6 +6,7 @@
 		<div class="col-lg-5 shadow-lg mt-5 rounded">
 			<div class="p-5">
 				<div class="text-center">
+					<img src="<?= base_url('assets/img/iklas.png');?>" alt="logo" class="w-50">
 					<p class="h4 text-gray-900 mb-2">Pendaftaran PPDB ONLINE</p>
                     <p class="h5 text-gray-900 mb-4">MA Darul Mukarram</p>
 				</div>
@@ -43,5 +44,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><br><br>
 </div>
