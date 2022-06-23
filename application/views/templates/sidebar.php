@@ -71,6 +71,20 @@
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Pengaturan</span></a>
                 </li>
+                <?php 
+                if ($user['role_id'] == 1) {
+                    if ($title == 'Tambah Admin') {
+                        echo '<li class="nav-item active">';
+                    } else {
+                        echo '<li class="nav-item">';
+                    }
+                    echo '
+                            <a class="nav-link pb-0" href="'.base_url('Admin/tambahadmin').'">
+                                <i class=" fas fa-fw fa-user-plus"></i>
+                                <span>Tambah Admin</span></a>
+                            </li>';
+                }
+                 ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
                         <i class=" fas fa-fw fa-sign-out-alt"></i>

@@ -43,6 +43,29 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function cetak()
+    {
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+
+        $data['siswa'] = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->row_array();
+        $data['sekolah'] = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->row_array();
+        $data['ortu'] = $this->db->get_where('data_ortu', ['id_user' => $user['id']])->row_array();
+
+        $ceksiswa = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->num_rows();
+        $cekortu = $this->db->get_where('data_ortu', ['id_user' => $user['id']])->num_rows();
+        $ceksekolah = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->num_rows();
+        if ($ceksiswa != 1) {
+            redirect('user/tambahsiswa');
+        }else if ($cekortu != 1) {
+            redirect('user/tambahortu');
+        }else if ($ceksekolah != 1) {
+            redirect('user/tambahsekolah');
+        }else{
+            $this->load->view('user/cetak', $data);
+        }
+    }
+
     public function tambahsiswa()
     {
         $this->form_validation->set_rules('nama', 'Nama Siswa', 'required');
@@ -455,23 +478,55 @@ class User extends CI_Controller
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['user'] = $user;
         $data['data_siswa'] = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->row_array();
+        
+        $data['siswa'] = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->row_array();
+        $data['sekolah'] = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->row_array();
+        $data['ortu'] = $this->db->get_where('data_ortu', ['id_user' => $user['id']])->row_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/pengumuman', $data);
-        $this->load->view('templates/footer');
+        $ceksiswa = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->num_rows();
+        $cekortu = $this->db->get_where('data_ortu', ['id_user' => $user['id']])->num_rows();
+        $ceksekolah = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->num_rows();
+        if ($ceksiswa != 1) {
+            redirect('user/tambahsiswa');
+        }else if ($cekortu != 1) {
+            redirect('user/tambahortu');
+        }else if ($ceksekolah != 1) {
+            redirect('user/tambahsekolah');
+        }else{
+            $this->load->view('user/pengumuman', $data);
+        }
+        
     }
 
     public function setting()
     {
         $data['title'] = 'Pengaturan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+			'matches' => 'Password dont match!',
+			'min_length' => 'Password too short!'
+		]);
+		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]');
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/setting', $data);
-        $this->load->view('templates/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/setting', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            ];
+
+            $this->db->set($data);
+            $this->db->where('id', $user['id']);
+            $this->db->update('user');
+
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Password Berhasil Diupdate!</div>');
+            redirect('admin/verif');
+        }
     }
+
 }

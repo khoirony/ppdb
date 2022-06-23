@@ -3,6 +3,11 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    
+    <?= $this->session->flashdata('msg');
+        if (isset($_SESSION['msg'])) {
+            unset($_SESSION['msg']);
+        } ?>
     <br>
     <div class="mr-3 mb-2">
         <div class="row">
@@ -31,7 +36,7 @@
                 <th scope="col">Tempat Tgl Lahir</th>
                 <th scope="col">Jenis kelamin</th>
                 <th scope="col">Status</th>
-                <th scope="col" width="14%" class="text-center">Aksi</th>
+                <th scope="col" width="16%" class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -66,6 +71,7 @@
                             echo anchor('Admin/batalkan/' . $siswa['id_siswa'], '<div class="btn btn-sm btn-danger"><i class="fas fa-times-circle"></i></div>');
                         }
                         ?>
+                        <a href="<?= base_url('Admin/cetaksiswa/' . $siswa['id_user']); ?>" class="btn btn-sm btn-warning"><i class="fas fa-print"></i></a>
                     </td>
                 </tr>
             <?php

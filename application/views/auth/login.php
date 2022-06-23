@@ -1,9 +1,13 @@
-<div class="container">
+<div class="text-center p-5"  style="background: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 0.719) 10%,
+			rgba(0, 0, 0, 0.13769257703081228) 100%
+		), url(<?= base_url('assets/img/sekolah.jpg');?>); background-size: cover;">
 
 	<!-- Outer Row -->
 	<div class="row justify-content-center">
 
-		<div class="col-lg-5 shadow-lg mt-5 rounded">
+		<div class="col-lg-5 bg-white shadow-lg mt-5 rounded">
 			<div class="p-5">
 				<div class="text-center">
 					<img src="<?= base_url('assets/img/iklas.png');?>" alt="logo" class="w-50">

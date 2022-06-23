@@ -3,6 +3,10 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <?= $this->session->flashdata('msg');
+        if (isset($_SESSION['msg'])) {
+            unset($_SESSION['msg']);
+        } ?>
     <br>
     <div style="float: right;" class="mr-3 mb-2">
         <a class="btn btn-primary rounded-pill pl-3 pr-3" href="<?= base_url('Admin/kirim'); ?>">Kirim Pengumuman</a>

@@ -24,6 +24,29 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function cetaksiswa($id)
+    {
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+
+        $data['siswa'] = $this->db->get_where('data_siswa', ['id_user' => $id])->row_array();
+        $data['sekolah'] = $this->db->get_where('data_sekolah', ['id_user' => $id])->row_array();
+        $data['ortu'] = $this->db->get_where('data_ortu', ['id_user' => $id])->row_array();
+
+        $ceksiswa = $this->db->get_where('data_siswa', ['id_user' => $id])->num_rows();
+        $cekortu = $this->db->get_where('data_ortu', ['id_user' => $id])->num_rows();
+        $ceksekolah = $this->db->get_where('data_sekolah', ['id_user' => $id])->num_rows();
+        if ($ceksiswa != 1) {
+            redirect('admin/lihat/'.$id);
+        }else if ($cekortu != 1) {
+            redirect('admin/lihat/'.$id);
+        }else if ($ceksekolah != 1) {
+            redirect('admin/lihat/'.$id);
+        }else{
+            $this->load->view('admin/cetaksiswa', $data);
+        }
+    }
+
     public function verif()
     {
         $data['title'] = 'Verifikasi Data Siswa';
@@ -204,7 +227,7 @@ class Admin extends CI_Controller
             $this->db->where('id_siswa', $this->input->post('id'));
             $this->db->update('data_siswa');
 
-            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Siswa Berhasil Ditambahkan!</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Siswa Berhasil diupdate!</div>');
             redirect('Admin/lihat/'. $siswa['id_user']);
         }
     }
@@ -384,6 +407,8 @@ class Admin extends CI_Controller
         $this->db->set($data);
         $this->db->where('id_siswa', $id);
         $this->db->update('data_siswa');
+
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Status Berhasil diubah!</div>');
         redirect('Admin/verif');
     }
 
@@ -396,6 +421,8 @@ class Admin extends CI_Controller
         $this->db->set($data);
         $this->db->where('id_siswa', $id);
         $this->db->update('data_siswa');
+
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Status Berhasil diubah!</div>');
         redirect('Admin/verif');
     }
 
@@ -413,6 +440,7 @@ class Admin extends CI_Controller
         $this->db->delete('data_berkas');
         $this->db->where($where2);
         $this->db->delete('user');
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Berhasil dihapus!</div>');
         redirect('Admin/verif');
     }
 
@@ -438,6 +466,7 @@ class Admin extends CI_Controller
         $this->db->set($data);
         $this->db->where('id_siswa', $id);
         $this->db->update('data_siswa');
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Status Berhasil diubah!</div>');
         redirect('Admin/pengumuman');
     }
 
@@ -449,6 +478,8 @@ class Admin extends CI_Controller
         $this->db->set($data);
         $this->db->where('id_siswa', $id);
         $this->db->update('data_siswa');
+
+        $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Status Berhasil diubah!</div>');
         redirect('Admin/pengumuman');
     }
 
@@ -457,22 +488,79 @@ class Admin extends CI_Controller
         $data['title'] = 'Cetak Laporan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
+        $data['data_siswa'] = $this->db->get_where('data_siswa', ['status_verif' => 1])->result_array();
+
         $this->load->view('admin/cetak', $data);
-        $this->load->view('templates/footer');
     }
 
     public function setting()
     {
         $data['title'] = 'Pengaturan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+			'matches' => 'Password dont match!',
+			'min_length' => 'Password too short!'
+		]);
+		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]');
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/setting', $data);
-        $this->load->view('templates/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/setting', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            ];
+
+            $this->db->set($data);
+            $this->db->where('id', $user['id']);
+            $this->db->update('user');
+
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Password Berhasil Diupdate!</div>');
+            redirect('admin/verif');
+        }
     }
+
+    public function tambahadmin()
+	{
+        $data['title'] = 'Tambah Admin';
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+
+		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+			'is_unique' => 'This email has already registered! '
+		]);
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+			'matches' => 'Password dont match!',
+			'min_length' => 'Password too short!'
+		]);
+		$this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]');
+
+		if ($this->form_validation->run() == false) {
+            $data['admin'] = $this->db->get_where('user', ['role_id' => 1])->result_array();
+			$this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/tambahadmin', $data);
+            $this->load->view('templates/footer');
+		} else {
+			$data = [
+				'name' => htmlspecialchars($this->input->post('name', true)),
+				'email' => htmlspecialchars($this->input->post('email', true)),
+				'image' => 'default.jpg',
+				'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+				'role_id' => 1,
+				'is_active' => 1,
+				'date_created' => time(),
+			];
+
+			$this->db->insert('user', $data);
+			$this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Akun Admin Berhasil Ditambahkan</div>');
+			redirect('admin/verif');
+		}
+	}
 }

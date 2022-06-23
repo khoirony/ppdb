@@ -3,6 +3,10 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Edit Data</h1>
+    <?= $this->session->flashdata('msg');
+        if (isset($_SESSION['msg'])) {
+            unset($_SESSION['msg']);
+        } ?>
     <br>
 
     <div class="row ml-3">
