@@ -493,9 +493,38 @@ class User extends CI_Controller
         }else if ($ceksekolah != 1) {
             redirect('user/tambahsekolah');
         }else{
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
             $this->load->view('user/pengumuman', $data);
+            $this->load->view('templates/footer');
         }
         
+    }
+
+    public function cetakpengumuman()
+    {
+        $data['title'] = 'Pengumuman';
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $user;
+        $data['data_siswa'] = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->row_array();
+        
+        $data['siswa'] = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->row_array();
+        $data['sekolah'] = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->row_array();
+        $data['ortu'] = $this->db->get_where('data_ortu', ['id_user' => $user['id']])->row_array();
+
+        $ceksiswa = $this->db->get_where('data_siswa', ['id_user' => $user['id']])->num_rows();
+        $cekortu = $this->db->get_where('data_ortu', ['id_user' => $user['id']])->num_rows();
+        $ceksekolah = $this->db->get_where('data_sekolah', ['id_user' => $user['id']])->num_rows();
+        if ($ceksiswa != 1) {
+            redirect('user/tambahsiswa');
+        }else if ($cekortu != 1) {
+            redirect('user/tambahortu');
+        }else if ($ceksekolah != 1) {
+            redirect('user/tambahsekolah');
+        }else{
+            $this->load->view('user/cetakpengumuman', $data);
+        }
     }
 
     public function setting()

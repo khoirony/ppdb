@@ -7,14 +7,13 @@
 	<!-- Outer Row -->
 	<div class="row justify-content-center">
 
-		<div class="col-lg-5 bg-white shadow-lg mt-5 rounded">
-			<div class="p-5">
+		<div class="col-lg-5 bg-white shadow-lg mt-2 rounded">
+			<div class="px-5 pt-5 pb-4">
 				<div class="text-center">
-					<img src="<?= base_url('assets/img/iklas.png');?>" alt="logo" class="w-50">
+					<img src="<?= base_url('assets/img/iklas.png');?>" alt="logo" class="w-25">
 					<p class="h4 text-gray-900 mb-2">Pendaftaran PPDB ONLINE</p>
                     <p class="h5 text-gray-900 mb-4">MA Darul Mukarram</p>
 				</div>
-				<br>
 				<form class="user" method="POST" action="<?= base_url('auth/registration'); ?>">
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user" id="name" name="name"
@@ -48,5 +47,5 @@
 				</div>
 			</div>
 		</div>
-	</div><br><br>
+	</div>
 </div>

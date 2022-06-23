@@ -1,11 +1,24 @@
-<!-- Begin Page Content -->
-<div class="container-fluid">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Page Heading -->
-    <h3 class="text-center fw-bold">SURAT KETERANGAN KELULUSAN</h3><br><br>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <div class="mx-5 px-5 text-start fw-normal">
-      <div class="mx-5 ">
+    <title>Cetak Formulir Pendaftaran</title>
+  </head>
+  <body>
+    <div class="container text-center">
+      <img src="<?= base_url('assets/img/kop.PNG');?>" alt="kop" class="border-bottom text-center" style="margin-left:-8em;">
+    </div><br><br>
+    <h3 class="text-center fw-bold">SURAT KETERANGAN KELULUSAN</h3>
+    <br><br>
+
+    <div class="mx-5 px-5 small text-start fw-normal">
+      <div class="mx-5 fs-5">
         <p>Berdasarkan hasil seleksi jalur prestasi dan bina lingkungan Madrasah Aliyah Darul Mukarram, <br>
           menerangkan bahwa:
         </p>
@@ -55,13 +68,18 @@
         }
         ?>
         <br><br>
-        <p class="">Demikian surat keterangan pemberitahuan ini, agar dapat digunakan sebagaimana mestinya
+        <p class="fs-5">Demikian surat keterangan pemberitahuan ini, agar dapat digunakan sebagaimana mestinya
         </p>
-        <br><br>
-        <a href="<?= base_url('user/cetakpengumuman');?>" class="btn btn-primary rounded-pill px-4">Cetak</a>
-      </div><br><br>
+
+      </div><br><br><br><br><br><br><br><br>
     </div>
 
 
-</div>
-<!-- /.container-fluid -->
+    <script>
+        window.print();
+    </script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
