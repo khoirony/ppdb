@@ -8,9 +8,6 @@
             unset($_SESSION['msg']);
         } ?>
     <br>
-    <div style="float: right;" class="mr-3 mb-2">
-        <a class="btn btn-primary rounded-pill pl-3 pr-3" href="<?= base_url('Admin/kirim'); ?>">Kirim Pengumuman</a>
-    </div>
     <table class="table">
         <thead class="thead-dark">
             <tr>

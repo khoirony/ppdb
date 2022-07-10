@@ -6,6 +6,10 @@
 	<br>
     <div class="row">
         <div class="col-7">
+            <?= $this->session->flashdata('msg');
+            if (isset($_SESSION['msg'])) {
+                unset($_SESSION['msg']);
+            } ?>
             <form class="user" method="POST" action="">
                 <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">

@@ -4,6 +4,7 @@
     <!-- Page Heading -->
     <h3 class="text-center fw-bold">SURAT KETERANGAN KELULUSAN</h3><br><br>
 
+    <?php if($siswa['status_verif'] == 1): ?>
     <div class="mx-5 px-5 text-start fw-normal">
       <div class="mx-5 ">
         <p>Berdasarkan hasil seleksi jalur prestasi dan bina lingkungan Madrasah Aliyah Darul Mukarram, <br>
@@ -61,6 +62,9 @@
         <a href="<?= base_url('user/cetakpengumuman');?>" class="btn btn-primary rounded-pill px-4">Cetak</a>
       </div><br><br>
     </div>
+    <?php else: ?>
+      <div class="container p-5 mt-5 text-center">-Belum Ada Data-</div>
+    <?php endif; ?>
 
 
 </div>

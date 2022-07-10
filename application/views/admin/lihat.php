@@ -285,7 +285,9 @@
 
         <div class="col-6">
             <div class="form-inline">
-                <h5>Berkas Pendukung</h5>
+                <h5>Berkas Pendukung<?php
+                echo anchor('admin/editberkas/' . $siswa['id_user'], '<span class="badge bg-primary ml-3">Edit Data</span>');
+                ?></h5>
             </div>
             <br>
             <?php if($cekberkas == 1){ 

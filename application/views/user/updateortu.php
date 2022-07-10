@@ -66,16 +66,19 @@
                 </div>
 
                 <div class="form-group">
+                    <span class="pl-3">Penghasilan Perbulan</span>
                     <input type="text" class="form-control form-control-user" id="penghasilan" name="penghasilan" placeholder="Penghasilan Perbulan" value="<?= $ortu['penghasilan_perbulan']; ?>">
                     <?= form_error('penghasilan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
+                    <span class="pl-3">Alamat rang Tua</span>
                     <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Orang Tua" value="<?= $ortu['alamat_ortu']; ?>">
                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
+                    <span class="pl-3">No Telp Orang Tua</span>
                     <input type="text" class="form-control form-control-user" id="nomor" name="nomor" placeholder="Nomor Telp Orang Tua" value="<?= $ortu['nomor_ortu']; ?>">
                     <?= form_error('nomor', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>

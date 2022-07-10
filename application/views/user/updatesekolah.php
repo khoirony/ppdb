@@ -12,16 +12,18 @@
             <form class="user" method="POST" action="">
 
                 <div class="form-group">
+                    <span class="pl-3">Asal Sekolah</span>
                     <input type="text" class="form-control form-control-user" id="asal_sekolah" name="asal_sekolah" placeholder="Asal Sekolah" value="<?= $sekolah['asal_sekolah']; ?>">
                     <?= form_error('asal_sekolah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
+                    <span class="pl-3">Alamat Sekolah</span>
                     <input type="text" class="form-control form-control-user" id="alamat_sekolah" name="alamat_sekolah" placeholder="Alamat Sekolah Asal" value="<?= $sekolah['alamat_sekolah']; ?>">
                     <?= form_error('alamat_sekolah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
-                <span class="pl-2">Status Sekolah Asal</span>
+                <span class="pl-3">Status Sekolah Asal</span>
                 <div class="form-group">
                     <select class="form-select form-select-lg rounded-pill fs-6" id="status_sekolah" name="status_sekolah" aria-label="Default select example">
                         <option value="Swasta">Swasta</option>
@@ -30,16 +32,18 @@
                 </div>
 
                 <div class="form-group">
+                    <span class="pl-3">Tahun Lulus</span>
                     <input type="text" class="form-control form-control-user" id="tahun_lulus" name="tahun_lulus" placeholder="Tahun Ijazah Lulus" value="<?= $sekolah['tahun_lulus']; ?>">
                     <?= form_error('tahun_lulus', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="form-group">
+                    <span class="pl-3">Nomor Ijazah</span>
                     <input type="text" class="form-control form-control-user" id="nomor_ijazah" name="nomor_ijazah" placeholder="Nomor Ijazah" value="<?= $sekolah['nomor_ijazah']; ?>">
                     <?= form_error('nomor_ijazah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
-                <span class="pl-2">Jalur Pendaftaran</span>
+                <span class="pl-3">Jalur Pendaftaran</span>
                 <div class="form-group">
                     <select class="form-select form-select-lg rounded-pill fs-6" id="jalur" name="jalur" aria-label="Default select example">
                         <option value="Reguler">Reguler</option>

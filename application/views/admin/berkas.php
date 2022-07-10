@@ -16,7 +16,8 @@
 
 	<div class="row">
 		<div class="col-md-4">
-			<form class="user" method="POST" action="<?= base_url('user/upload'); ?>" enctype="multipart/form-data">
+			<form class="user" method="POST" action="<?= base_url('admin/upload'); ?>" enctype="multipart/form-data">
+            <input type="hidden" id="id" name="id" value="<?= $id;?>">
 				<div class="form-group">
 					<label class="form-label ml-3">Upload Ijazah/Surat Keterangan Lulus</label>
 					<input type="file" id="ijazah" name="ijazah" class="form-control rounded-pill">

@@ -10,10 +10,12 @@
             <form class="user" method="POST" action="#">
                 <input type="hidden" id="id" name="id" value="<?= $siswa['id_siswa']; ?>">
                 <div class="form-group">
+                    <span class="pl-3">Nama Lengkap</span>
                     <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Nama Lengkap" value="<?= $siswa['nama_lengkap']; ?>">
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                    <span class="pl-3">NISN</span>
                     <input type="text" class="form-control form-control-user" id="nisn" name="nisn" placeholder="NISN" value="<?= $siswa['nisn']; ?>">
                     <?= form_error('nisn', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
@@ -29,6 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <span class="pl-3">Jenis Kelamin</span>
                     <input type="text" class="form-control form-control-user" id="jk" name="jk" placeholder="Jenis Kelamin" value="<?= $siswa['jk']; ?>">
                     <?= form_error('jk', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
@@ -45,26 +48,32 @@
                     </div>
                 </div>
                 <div class="form-group">
+                <span class="pl-3">Agama</span>
                     <input type="text" class="form-control form-control-user" id="agama" name="agama" placeholder="Agama" value="<?= $siswa['agama']; ?>">
                     <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                <span class="pl-3">Alamat</span>
                     <input type="text" class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat" value="<?= $siswa['alamat']; ?>">
                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                <span class="pl-3">Hobi</span>
                     <input type="text" class="form-control form-control-user" id="hobi" name="hobi" placeholder="Hobi" value="<?= $siswa['hobi']; ?>">
                     <?= form_error('hobi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                <span class="pl-3">Cita Cita</span>
                     <input type="text" class="form-control form-control-user" id="cita_cita" name="cita_cita" placeholder="Cita Cita" value="<?= $siswa['cita_cita']; ?>">
                     <?= form_error('cita_cita', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                <span class="pl-3">Jarak Rumah</span>
                     <input type="text" class="form-control form-control-user" id="jarak_rumah" name="jarak_rumah" placeholder="Jarak Rumah" value="<?= $siswa['jarak_rumah']; ?>">
                     <?= form_error('jarak_rumah', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                <span class="pl-3">Transportasi</span>
                     <input type="text" class="form-control form-control-user" id="transportasi" name="transportasi" placeholder="Transportasi" value="<?= $siswa['transportasi']; ?>">
                     <?= form_error('transportasi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
