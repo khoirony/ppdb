@@ -638,7 +638,7 @@ class Admin extends CI_Controller
             $this->db->update('user');
 
             $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Password Berhasil Diupdate!</div>');
-            redirect('admin/verif');
+            redirect('admin/setting');
         }
     }
 
