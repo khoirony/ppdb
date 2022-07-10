@@ -238,7 +238,7 @@
         </div><br><br><br>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-8">
           <br><br><br><br><br><br>
         Catatatan: <br>
@@ -257,7 +257,7 @@
             (<?= $siswa['nama_lengkap']; ?>)
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
 
 

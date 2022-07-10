@@ -172,7 +172,7 @@ class User extends CI_Controller
             $this->db->where('id_siswa', $id);
             $this->db->update('data_siswa');
 
-            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Siswa Berhasil Ditambahkan!</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Siswa Berhasil Diupdate!</div>');
             redirect('user/tambahsiswa');
         }
     }
@@ -267,7 +267,7 @@ class User extends CI_Controller
             $this->db->where('id_ortu', $id);
             $this->db->update('data_ortu');
 
-            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Diupdate!</div>');
             redirect('user/tambahortu');
         }
     }
@@ -311,7 +311,7 @@ class User extends CI_Controller
 
             $this->db->insert('data_sekolah', $data);
 
-            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Sekolah Berhasil Ditambahkan!</div>');
             redirect('user/tambahsekolah');
         }
     }
@@ -350,7 +350,7 @@ class User extends CI_Controller
             $this->db->where('id_sekolah', $id);
             $this->db->update('data_sekolah');
 
-            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Orang Tua Berhasil Ditambahkan!</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Data Sekolah Berhasil Diupdate!</div>');
             redirect('user/tambahsekolah');
         }
     }
