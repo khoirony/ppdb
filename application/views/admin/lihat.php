@@ -290,7 +290,7 @@
                 ?></h5>
             </div>
             <br>
-            <?php if($cekberkas == 1){ 
+            <?php if($cekberkas > 0){ 
             ?>
             <div class="row pt-2">
                 <div class="col-4">

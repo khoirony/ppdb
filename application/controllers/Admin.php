@@ -420,98 +420,95 @@ class Admin extends CI_Controller
         $data['title'] = 'Berkas Pendukung';
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['data_berkas'] = $this->db->get_where('data_berkas', ['id_user' => $this->input->post('id_user')])->row_array();
-        $cekberkas = $this->db->get_where('data_berkas', ['id_user' => $this->input->post('id_user')])->num_rows();
+        $cekberkas = $this->db->get_where('data_berkas', ['id_user' => $this->input->post('id')])->num_rows();
         $data['cekberkas'] = $cekberkas;
 
         $upload_ijazah = $_FILES['ijazah']['name'];
-        $upload_kk = $_FILES['kk']['name'];
-        $upload_akta = $_FILES['akta']['name'];
-
         if ($upload_ijazah) {
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size']     = '2048';
             $config['upload_path'] = './assets/img/berkas/';
-
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 10000;
+            
             $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('ijazah')) {
-                $old_ijazah = $data['data_berkas']['ijazah'];
-                if ($old_ijazah != 'default.jpg') {
+            $this->upload->initialize($config);
+           
+            if ( ! $this->upload->do_upload('ijazah')){
+                echo $this->upload->display_errors();
+            }else{
+                $old_ijazah = $data['profesi']['ijazah'];
+                if ($old_ijazah != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_ijazah);
                 }
-                $new_ijazah = $this->upload->data('file_name');
-                if($cekberkas == 0){
-                    $data = [
-                        'ijazah' => $new_ijazah,
-                        'id_user' => $this->input->post('id'),
-                    ];
-                    $this->db->insert('data_berkas', $data);
-                }else{
-                    $this->db->set('ijazah', $new_ijazah);
-                    $this->db->where('id_user', $this->input->post('id'));
-                    $this->db->update('data_berkas');
-                }
-            } else {
-                echo $this->upload->display_errors();                
+                $ijazah = $this->upload->data('file_name');
             }
+        }else{
+            $ijazah = "";
         }
+
+        $upload_kk = $_FILES['kk']['name'];
         if ($upload_kk) {
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size']     = '2048';
             $config['upload_path'] = './assets/img/berkas/';
-
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 10000;
+            
             $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('kk')) {
-                $old_kk = $data['data_berkas']['kk'];
-                if ($old_kk != 'default.jpg') {
+            $this->upload->initialize($config);
+           
+            if ( ! $this->upload->do_upload('kk')){
+                echo $this->upload->display_errors();
+            }else{
+                $old_kk = $data['profesi']['kk'];
+                if ($old_kk != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_kk);
                 }
-                $new_kk = $this->upload->data('file_name');
-                if($cekberkas == 0){
-                    $data = [
-                        'kk' => $new_kk,
-                        'id_user' => $this->input->post('id'),
-                    ];
-                    $this->db->insert('data_berkas', $data);
-                }else{
-                    $this->db->set('kk', $new_kk);
-                    $this->db->where('id_user', $this->input->post('id'));
-                    $this->db->update('data_berkas');
-                }
-            } else {
-                echo $this->upload->display_errors();                
+                $kk = $this->upload->data('file_name');
             }
+        }else{
+            $kk = "";
         }
 
+        $upload_akta = $_FILES['akta']['name'];
         if ($upload_akta) {
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size']     = '2048';
             $config['upload_path'] = './assets/img/berkas/';
-
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 10000;
+            
             $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('akta')) {
-                $old_akta = $data['data_berkas']['akta'];
-                if ($old_akta != 'default.jpg') {
+            $this->upload->initialize($config);
+           
+            if ( ! $this->upload->do_upload('akta')){
+                echo $this->upload->display_errors();
+            }else{
+                $old_akta = $data['profesi']['akta'];
+                if ($old_akta != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_akta);
                 }
-                $new_akta = $this->upload->data('file_name');
-                if($cekberkas == 0){
-                    $data = [
-                        'akta' => $new_akta,
-                        'id_user' => $this->input->post('id'),
-                    ];
-                    $this->db->insert('data_berkas', $data);
-                }else{
-                    $this->db->set('akta', $new_akta);
-                    $this->db->where('id_user', $this->input->post('id'));
-                    $this->db->update('data_berkas');
-                }
-            } else {
-                echo $this->upload->display_errors();                
+                $akta = $this->upload->data('file_name');
             }
+        }else{
+            $akta = "";
         }
+
+        if($cekberkas == 0){
+            $data = [
+                'ijazah' => $ijazah,
+                'kk' => $kk,
+                'akta' => $akta,
+                'id_user' => $this->input->post('id'),
+            ];
+            $this->db->insert('data_berkas', $data);
+        }else{
+            $data = [
+                'ijazah' => $ijazah,
+                'kk' => $kk,
+                'akta' => $akta,
+                'id_user' => $this->input->post('id'),
+            ];
+            $this->db->set($data);
+            $this->db->where('id_user', $this->input->post('id'));
+            $this->db->update('data_berkas');
+        }
+
         $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Berkas Berhasil Ditambahkan!</div>');
         redirect('admin/lihat/'.$this->input->post('id'));
     }
