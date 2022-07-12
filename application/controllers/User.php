@@ -375,8 +375,8 @@ class User extends CI_Controller
     public function upload(){
         $data['title'] = 'Berkas Pendukung';
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['data_berkas'] = $this->db->get_where('data_berkas', ['id_user' => $this->input->post('id_user')])->row_array();
-        $cekberkas = $this->db->get_where('data_berkas', ['id_user' => $this->input->post('id')])->num_rows();
+        $data['data_berkas'] = $this->db->get_where('data_berkas', ['id_user' => $user['id']])->row_array();
+        $cekberkas = $this->db->get_where('data_berkas', ['id_user' => $user['id']])->num_rows();
         $data['cekberkas'] = $cekberkas;
 
         $upload_ijazah = $_FILES['ijazah']['name'];
@@ -391,11 +391,20 @@ class User extends CI_Controller
             if ( ! $this->upload->do_upload('ijazah')){
                 echo $this->upload->display_errors();
             }else{
-                $old_ijazah = $data['profesi']['ijazah'];
+                $old_ijazah = $data['data_berkas']['ijazah'];
                 if ($old_ijazah != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_ijazah);
                 }
                 $ijazah = $this->upload->data('file_name');
+
+                if($cekberkas != 0){
+                    $data = [
+                        'ijazah' => $ijazah,
+                    ];
+                    $this->db->set($data);
+                    $this->db->where('id_user', $user['id']);
+                    $this->db->update('data_berkas');
+                }
             }
         }else{
             $ijazah = "";
@@ -413,11 +422,19 @@ class User extends CI_Controller
             if ( ! $this->upload->do_upload('kk')){
                 echo $this->upload->display_errors();
             }else{
-                $old_kk = $data['profesi']['kk'];
+                $old_kk = $data['data_berkas']['kk'];
                 if ($old_kk != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_kk);
                 }
                 $kk = $this->upload->data('file_name');
+                if($cekberkas != 0){
+                    $data = [
+                        'kk' => $kk,
+                    ];
+                    $this->db->set($data);
+                    $this->db->where('id_user', $user['id']);
+                    $this->db->update('data_berkas');
+                }
             }
         }else{
             $kk = "";
@@ -435,11 +452,20 @@ class User extends CI_Controller
             if ( ! $this->upload->do_upload('akta')){
                 echo $this->upload->display_errors();
             }else{
-                $old_akta = $data['profesi']['akta'];
+                $old_akta = $data['data_berkas']['akta'];
                 if ($old_akta != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_akta);
                 }
                 $akta = $this->upload->data('file_name');
+
+                if($cekberkas != 0){
+                    $data = [
+                        'akta' => $akta,
+                    ];
+                    $this->db->set($data);
+                    $this->db->where('id_user', $user['id']);
+                    $this->db->update('data_berkas');
+                }
             }
         }else{
             $akta = "";
@@ -450,19 +476,9 @@ class User extends CI_Controller
                 'ijazah' => $ijazah,
                 'kk' => $kk,
                 'akta' => $akta,
-                'id_user' => $this->input->post('id'),
+                'id_user' => $user['id'],
             ];
             $this->db->insert('data_berkas', $data);
-        }else{
-            $data = [
-                'ijazah' => $ijazah,
-                'kk' => $kk,
-                'akta' => $akta,
-                'id_user' => $this->input->post('id'),
-            ];
-            $this->db->set($data);
-            $this->db->where('id_user', $this->input->post('id'));
-            $this->db->update('data_berkas');
         }
 
         $this->session->set_flashdata('msg', '<div class="alert alert-success" role="alert">Berkas Berhasil Ditambahkan!</div>');

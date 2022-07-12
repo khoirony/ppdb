@@ -435,7 +435,7 @@ class Admin extends CI_Controller
             if ( ! $this->upload->do_upload('ijazah')){
                 echo $this->upload->display_errors();
             }else{
-                $old_ijazah = $data['profesi']['ijazah'];
+                $old_ijazah = $data['data_berkas']['ijazah'];
                 if ($old_ijazah != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_ijazah);
                 }
@@ -457,7 +457,7 @@ class Admin extends CI_Controller
             if ( ! $this->upload->do_upload('kk')){
                 echo $this->upload->display_errors();
             }else{
-                $old_kk = $data['profesi']['kk'];
+                $old_kk = $data['data_berkas']['kk'];
                 if ($old_kk != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_kk);
                 }
@@ -479,7 +479,7 @@ class Admin extends CI_Controller
             if ( ! $this->upload->do_upload('akta')){
                 echo $this->upload->display_errors();
             }else{
-                $old_akta = $data['profesi']['akta'];
+                $old_akta = $data['data_berkas']['akta'];
                 if ($old_akta != NULL) {
                     unlink(FCPATH . './assets/img/berkas/' . $old_akta);
                 }

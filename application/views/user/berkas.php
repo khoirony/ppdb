@@ -40,38 +40,81 @@
         </div>
 		<div class="col-md-5">
             <?php 
-            if($cekberkas == 0){
+            if($cekberkas == 0): ?>
                 echo '
                 Status <br><br>
                 Upload Ijazah/SKL : <br>
                 Upload Kartu Keluarga : <br>
                 Upload Akta Kelahiran :  ';
-            }else{
-                ?>
-                Status <br><br>
+            <?php else: ?>
+                Status <br>
                 Upload Ijazah/SKL : 
 
-                <?php 
-                if ($berkas['ijazah'] != '') {
-                    echo '<span class="badge badge-success">Sudah diupload</span>';
-                } else {
-                    echo '<span class="badge badge-danger">Belum diupload</span>';
-                } ?> <br>
+                <?php if ($berkas['ijazah'] != ''): ?>
+                    <span class="badge badge-success">Sudah diupload</span><br>
+                    <img src="<?= base_url('assets/img/berkas/' . $berkas['ijazah']); ?>" width="150" alt="ijazah" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body mx-auto">
+                                <img src="<?= base_url('assets/img/berkas/' . $berkas['ijazah']); ?>" alt="ijazah" class="img-thumbnail">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <span class="badge badge-danger">Belum diupload</span>
+                <?php endif; ?> <br>
+
                 Upload Kartu Keluarga : 
-                <?php 
-                if ($berkas['kk'] != '') {
-                    echo '<span class="badge badge-success">Sudah diupload</span>';
-                } else {
-                    echo '<span class="badge badge-danger">Belum diupload</span>';
-                } ?> <br>
+                <?php if($berkas['kk'] != ''): ?>
+                    <span class="badge badge-success">Sudah diupload</span><br>
+                    <img src="<?= base_url('assets/img/berkas/' . $berkas['kk']); ?>" width="150" alt="kk" type="button" data-bs-toggle="modal" data-bs-target="#kk">
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="kk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body mx-auto">
+                                <img src="<?= base_url('assets/img/berkas/' . $berkas['kk']); ?>" alt="kk" class="img-thumbnail">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <span class="badge badge-danger">Belum diupload</span>
+                <?php endif; ?> <br>
+
                 Upload Akta Kelahiran : 
-                <?php 
-                if ($berkas['akta'] != '') {
-                    echo '<span class="badge badge-success">Sudah diupload</span>';
-                } else {
-                    echo '<span class="badge badge-danger">Belum diupload</span>';
-                } 
-            }?>
+                <?php if($berkas['akta'] != ''): ?>
+                    <span class="badge badge-success">Sudah diupload</span><br>
+                    <img src="<?= base_url('assets/img/berkas/' . $berkas['akta']); ?>" width="150" alt="akta" type="button" data-bs-toggle="modal" data-bs-target="#akta">
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="akta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body mx-auto">
+                                <img src="<?= base_url('assets/img/berkas/' . $berkas['akta']); ?>" alt="akta" class="img-thumbnail">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <span class="badge badge-danger">Belum diupload</span>
+                <?php endif; ?>
+            <?php endif; ?>
 		</div>
 	</div>
 
