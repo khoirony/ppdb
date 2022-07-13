@@ -199,6 +199,14 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
         $this->form_validation->set_rules('tgl_lahir', 'Tgl Lahir', 'required');
         $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required');
+        $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('hobi', 'Hobi', 'required');
+        $this->form_validation->set_rules('cita_cita', 'Cita Cita', 'required');
+        $this->form_validation->set_rules('jarak_rumah', 'Jarak Rumah', 'required');
+        $this->form_validation->set_rules('transportasi', 'Trasportasi', 'required');
 
 
         $data['title'] = 'Verifikasi Data Siswa';
@@ -221,6 +229,14 @@ class Admin extends CI_Controller
                 'tempat_lahir' => htmlspecialchars($this->input->post('tempat_lahir', true)),
                 'tgl_lahir' => htmlspecialchars($this->input->post('tgl_lahir', true)),
                 'jk' => htmlspecialchars($this->input->post('jk', true)),
+                'anak_ke' => htmlspecialchars($this->input->post('anak_ke', true)),
+                'jumlah_saudara' => htmlspecialchars($this->input->post('jumlah_saudara', true)),
+                'agama' => htmlspecialchars($this->input->post('agama', true)),
+                'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+                'hobi' => htmlspecialchars($this->input->post('hobi', true)),
+                'cita_cita' => htmlspecialchars($this->input->post('cita_cita', true)),
+                'jarak_rumah' => htmlspecialchars($this->input->post('jarak_rumah', true)),
+                'transportasi' => htmlspecialchars($this->input->post('transportasi', true)),
             ];
 
             $this->db->set($data);

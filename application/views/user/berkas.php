@@ -4,18 +4,15 @@
 	<!-- Page Heading -->
 	<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 	<br>
-    <div class="row">
-        <div class="col-md-4">
-        <?= $this->session->flashdata('msg');
-            if (isset($_SESSION['msg'])) {
-                unset($_SESSION['msg']);
-            } ?>
-        </div>
-    </div>
-    
+        
+        
+        <div class="row">
+            <div class="col-md-4">
+            <?= $this->session->flashdata('msg');
+                if (isset($_SESSION['msg'])) {
+                    unset($_SESSION['msg']);
+                } ?>
 
-	<div class="row">
-		<div class="col-md-4">
 			<form class="user" method="POST" action="<?= base_url('user/upload'); ?>" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="form-label ml-3">Upload Ijazah/Surat Keterangan Lulus</label>
